@@ -1,2 +1,2 @@
 # friendly
-In-progress VA, in which you can create a bot reflecting you.
+In-progress VA, through which you can create a bot reflecting you.
