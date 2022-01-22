@@ -4,7 +4,12 @@ import pywhatkit
 import pandas as pd
 import wikipedia
 
-df = pd.read_csv(r'C:\Users\hp\Desktop\harshit\Python\pandas_01\data\form.csv')
+'''
+Here google survey form is used to get the required data as a csv file
+Another method for inserting yourown data will be available later
+Or you can alter the data using pandas
+'''
+df = pd.read_csv(r'LOCATION OF THE CSV FILE')   #the csv file is available in the repo
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
@@ -20,7 +25,7 @@ def talk(text):
 def take_command():
     try:
         with sr.Microphone() as source:
-            listener.adjust_for_ambient_noise(source, duration=0.5)
+            listener.adjust_for_ambient_noise(source, duration=0.5) #adjusting the microphone as necessary
             print('listening...')
             voice = listener.listen(source)
             command = listener.recognize_google(voice)
@@ -34,8 +39,7 @@ def take_command():
     return command
 
 def get_data():
-    #request = input('Enter the name : ')
-    request = 'Jalaj Pathak'
+    request = input('Enter the name : ')
     filt = df['Name'].str.contains(request, na=False)
     data = df.loc[filt]
     return data
@@ -97,6 +101,7 @@ def run_bot():
     
     else:
         print('Err...')
+
 
 ask_name = ('what is your name', "what's your name", 'who are you', 'can you tell me your name', 'what do people call you')
 wellness = ('how you doing', 'how are you', "how you doin'", 'how are you doing')
